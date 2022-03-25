@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"time"
 )
 
 // Run does the running of the console application
@@ -47,7 +48,6 @@ func parseCommand(input string) {
 	switch {
 	case input == "1":
 		// Add a task
-
 		views.Clear()
 		views.PrintTaskInformation()
 		response := AskForInput()
@@ -88,7 +88,6 @@ func parseCommand(input string) {
 
 	case input == "5":
 		// Edit a task
-		//
 		views.Clear()
 		tasks := models.FindAllTasks()
 		views.PrintTaskList(tasks)
@@ -105,7 +104,6 @@ func parseCommand(input string) {
 
 	case input == "6":
 		// Show all tasks
-		//
 		views.Clear()
 		tasks := models.FindAllTasks()
 		views.PrintTaskList(tasks)
@@ -114,15 +112,14 @@ func parseCommand(input string) {
 
 	case input == "c":
 		// Clear view and print menu
-		//
 		views.Clear()
 		views.PrintMenu()
 		break
 	case input == "q":
 		// Terminate application
-		//
 		views.Clear()
 		views.PrintGoodbye()
+		time.Sleep(5 * time.Second)
 		views.ShutDown()
 		break
 	}
@@ -137,14 +134,12 @@ func CreateTask(input string) models.Task {
 	}
 
 	// Parse task
-	//
 	title := elements[0]
 	description := elements[1]
 	tag := elements[2]
 	var completed bool = models.ToBool(elements[3])
 
 	// Create new task based on parsed values
-	//
 	task := models.Task{Title: title, Description: description, Tag: tag, Completed: completed}
 
 	return task

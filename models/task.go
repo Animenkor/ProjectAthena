@@ -45,7 +45,6 @@ func Initialize() {
 
 func getDataFromFile() ([]Task, error) {
 	// open file
-	//
 	file, err := os.Open(FileName)
 	if err != nil {
 		return nil, err
@@ -54,7 +53,6 @@ func getDataFromFile() ([]Task, error) {
 	var completedTasks []Task
 
 	// read csv values using csv.Reader
-	//
 	csvReader := csv.NewReader(file)
 	for {
 		records, err := csvReader.Read()
@@ -68,12 +66,10 @@ func getDataFromFile() ([]Task, error) {
 		task := parseTaskData(records)
 
 		// Add task to slice
-		//
 		completedTasks = append(completedTasks, task)
 	}
 
 	// remember to close the file at the end
-	//
 	file.Close()
 
 	return completedTasks, nil
@@ -81,14 +77,12 @@ func getDataFromFile() ([]Task, error) {
 
 func parseTaskData(rec []string) Task {
 	// Parse task
-	//
 	title := rec[0]
 	description := rec[1]
 	tag := rec[2]
 	completed := ToBool(rec[3])
 
 	// Create new task based on parsed values
-	//
 	task := Task{Title: title, Description: description, Tag: tag, Completed: completed}
 	return task
 }
@@ -224,11 +218,11 @@ func EditTask(i string) {
 	}
 }
 
-//EditFieldTask sets a new value to a chosen field
+// EditFieldTask sets a new value to a chosen field
 func EditFieldTask(rowIndex, field, newInfo string) {
 	idAsInt := ToInt(rowIndex) - 1
 
-	for index, _ := range tasks {
+	for index := range tasks {
 		if index == idAsInt {
 			switch {
 			case field == "title":

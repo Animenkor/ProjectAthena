@@ -34,11 +34,15 @@ func Clear() {
 
 // PrintTaskList prints all the tasks to the console
 func PrintTaskList(tasksToPrint []models.Task) {
-	for i, task := range tasksToPrint {
-		fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------")
-		fmt.Printf("%d | %-5s %-20s | %-11s %-40s | %-3s %-20s | %-9s %t\n", i+1, "TITLE: ", task.Title, "DESCRIPTION: ", task.Description, "TAG: ", task.Tag, "COMPLETED: ", task.Completed)
-	}
 
+	fmt.Println("--------------------------------------------------------------------------------------------------------------------------------")
+	fmt.Printf("%-6s | %-25s | %-50s | %-25s | %-10s\n", "INDEX:", "TITLE: ", "DESCRIPTION: ", "TAG: ", "COMPLETED: ")
+	fmt.Println("--------------------------------------------------------------------------------------------------------------------------------")
+
+	for i, task := range tasksToPrint {
+		fmt.Printf("%-6d | %-25s | %-50s | %-25s | %t\n", i+1, task.Title, task.Description, task.Tag, task.Completed)
+	}
+	fmt.Println("--------------------------------------------------------------------------------------------------------------------------------")
 }
 
 // PrintContinue prints the continuation information to the console
@@ -61,22 +65,18 @@ func PrintTaskInformation() {
 }
 
 func PrintRemovingInformation() {
-	fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------")
 	fmt.Println("Please enter the the number of the task you want to delete")
 }
 
 func PrintCompleteTask() {
-	fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------")
 	fmt.Println("Please enter the the number of the task you want to mark as completed")
 }
 
 func PrintIncompleteTask() {
-	fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------")
 	fmt.Println("Please enter the the number of the task you want to mark as incompleted")
 }
 
 func PrintEditTaskInformation() {
-	fmt.Println("------------------------------------------------------------------------------------------------------------------------------------------")
 	fmt.Println("Please enter the the number of the task you want to edit")
 }
 
